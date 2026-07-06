@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נביאים על המפה!</title>
+    <!-- Modern Fonts (Heebo for Hebrew, Inter for numbers/English) -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            var errDiv = document.createElement('div');
+            errDiv.style.position = 'fixed';
+            errDiv.style.top = '0';
+            errDiv.style.left = '0';
+            errDiv.style.width = '100%';
+            errDiv.style.backgroundColor = 'red';
+            errDiv.style.color = 'white';
+            errDiv.style.zIndex = '999999';
+            errDiv.style.padding = '10px';
+            errDiv.innerText = 'JS Error: ' + message + ' at ' + source + ':' + lineno;
+            document.body.appendChild(errDiv);
+        };
+        window.onunhandledrejection = function(event) {
+            var errDiv = document.createElement('div');
+            errDiv.style.position = 'fixed';
+            errDiv.style.top = '40px';
+            errDiv.style.left = '0';
+            errDiv.style.width = '100%';
+            errDiv.style.backgroundColor = 'orange';
+            errDiv.style.color = 'white';
+            errDiv.style.zIndex = '999999';
+            errDiv.style.padding = '10px';
+            errDiv.innerText = 'Promise Error: ' + event.reason;
+            document.body.appendChild(errDiv);
+        };
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!-- Game Content (Right Side) -->
+        <div id="game-content">
+            <!-- Header -->
+            <header>
+                <!-- Utilities: Home Selector & Mute -->
+                <div id="top-utils" style="display: flex; gap: 15px; align-items: center;">
+                    <div id="home-bar">
+                        <span class="home-label">הבית שלי: 🏠</span>
+                        <select id="home-city">
+                            <option value="">בחר עיר/יישוב...</option>
+                        </select>
+                    </div>
+                    <button id="mute-btn" class="mute-btn" title="השתק/הפעל צלילי עזר" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center;">🔊</button>
+                </div>
+                
+                <h1>נביאים על המפה!</h1>
+                
+                <div id="score-board">
+                    <span>ניקוד: </span>
+                    <span id="score-value">0 / 5</span>
+                </div>
+            </header>
+
+        <!-- Main Game Area -->
+        <main>
+            <!-- Clue Box -->
+            <div id="clue-container">
+                <!-- Start Screen -->
+                <div id="start-screen">
+                    <h2 id="start-title" style="color: var(--primary-color); margin-bottom: 10px;">ברוכים הבאים למשחק!</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px;">
+                        במשחקון זה 5 חידות אקראיות על מפת ארץ ישראל. נחשו היכן התרחשו האירועים התנ"כיים. 
+                        נקודה מוענקת רק אם עניתם נכון בניסיון הראשון, ללא טעויות וללא שימוש ברמז. בהצלחה!
+                    </p>
+                    <button id="start-btn" class="hint-button" style="background: var(--primary-color); color: white;">התחל משחק 🚀</button>
+                </div>
+
+                <!-- Game Screen -->
+                <div id="game-screen" class="hidden">
+                    <h2 id="clue-title">שאלה 1 מתוך 5:</h2>
+                    <div id="clue-category" class="clue-category hidden"></div>
+                    <p id="clue-text">טוען שאלה...</p>
+                    <div id="options-container" class="options-container"></div>
+                    <div class="clue-buttons">
+                        <button id="skip-btn" class="hint-button">שאלה הבאה ⏭️</button>
+                        <button id="reveal-btn" class="hint-button small-hint-button">גלה לי את התשובה 💡</button>
+                    </div>
+                </div>
+
+                <!-- End Screen -->
+                <div id="end-screen" class="hidden">
+                    <h2 id="end-title" style="color: var(--primary-color); margin-bottom: 10px;">סיכום המשחקון</h2>
+                    <p id="end-text" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 20px;"></p>
+                    <button id="restart-btn" class="hint-button" style="background: var(--secondary-color); color: white;">שחק שוב 🔄</button>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div id="map"></div>
+        </main>
+
+        </div> <!-- End game-content -->
+
+        <!-- Timeline Wrapper (Left Side) -->
+        <div id="timeline-wrapper">
+            <div id="timeline-container"></div>
+        </div>
+
+        <!-- Version Label -->
+        <div class="version-label">v.1.0.2</div>
+
+        <!-- Result Modal -->
+        <div id="result-modal" class="hidden">
+            <div class="modal-content">
+                <button id="close-modal">X</button>
+                <div class="modal-header-row">
+                    <div id="character-icon">👤</div>
+                    <div class="modal-header-text">
+                        <h2 id="modal-title">כל הכבוד!</h2>
+                        <h3 id="character-name"></h3>
+                        <p id="character-description" class="character-description"></p>
+                        <div id="place-name" class="place-badge"></div>
+                    </div>
+                </div>
+                <div class="biblical-source-container">
+                    <div class="biblical-source primary-source">
+                        <p id="verse-text">טוען פסוק...</p>
+                        <span id="verse-ref"></span>
+                    </div>
+                    <div class="biblical-source secondary-source hidden" id="secondary-source-container">
+                        <p id="secondary-verse-text">טוען פסוק נוסף...</p>
+                        <span id="secondary-verse-ref"></span>
+                    </div>
+                </div>
+                <button id="open-chapter-btn" class="secondary-button">📖 קרא והאזן לפרק המלא</button>
+                <div id="spotify-player-container"></div>
+                <button id="next-button">חזור למפה 🗺️</button>
+            </div>
+        </div>
+        
+        <!-- Full Chapter Modal -->
+        <div id="full-chapter-modal" class="hidden">
+            <div class="modal-content large-modal">
+                <button id="close-chapter-modal">X</button>
+                <h2 id="chapter-title">טוען פרק...</h2>
+                
+                <div class="audio-players-container">
+                    <div class="audio-option" id="regular-audio-container">
+                        <label>הקראה רגילה:</label>
+                        <audio id="audio-regular" controls></audio>
+                    </div>
+                    <div class="audio-option hidden" id="yemenite-audio-container">
+                        <label>הגייה תימנית:</label>
+                        <audio id="audio-yemenite" controls></audio>
+                    </div>
+                </div>
+
+                <div id="full-chapter-text" class="chapter-text-container">
+                    <p>טוען נתונים מספרייה...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="success-sound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+        <audio id="error-sound" src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=error-126627.mp3"></audio>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

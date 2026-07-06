@@ -1,0 +1,21 @@
+export const timelineData = [
+    { year: -1313, character: "משה רבנו", event: "מתן תורה בהר סיני" },
+    { year: -1273, character: "יהושע בן נון", event: "כניסה לארץ וכיבושים" },
+    { year: -1200, character: "אהוד בן גרא", event: "התנקשות בעגלון מלך מואב" },
+    { year: -1150, character: "דבורה הנביאה", event: "מלחמת סיסרא" },
+    { year: -1148, character: "יעל", event: "הריגת סיסרא" },
+    { year: -1100, character: "גדעון השופט", event: "מלחמת מדין" },
+    { year: -1080, character: "שמשון הגיבור", event: "תמנה, עזה וגיבור הפלשתים" },
+    { year: -1050, character: "שמואל וחנה", event: "שילה והמלכת שאול" },
+    { year: -1030, character: "שאול המלך", event: "המלוכה והנפילה בגלבוע" },
+    { year: -1000, character: "דוד המלך", event: "כיבוש ירושלים וניצחונות" },
+    { year: -970, character: "שלמה המלך", event: "בניין המקדש" },
+    { year: -930, character: "רחבעם וירבעם", event: "פילוג הממלכה ועגלי הזהב" },
+    { year: -850, character: "אליהו ועמרי", event: "הכרמל, שומרון ויזרעאל" },
+    { year: -800, character: "אלישע הנביא", event: "שונם וריפוי המים ביריחו" },
+    { year: -780, character: "יונה הנביא", event: "הבריחה מיפו לנינווה" },
+    { year: -760, character: "עמוס הנביא", event: "נבואות תוכחה מתקוע" },
+    { year: -740, character: "מיכה הנביא", event: "נבואות החורבן ממורשת גת" },
+    { year: -620, character: "יאשיהו המלך", event: "בדק הבית ומותו במגידו" },
+    { year: -586, character: "ירמיהו הנביא", event: "חורבן בית ראשון" }
+];
