@@ -23,6 +23,7 @@ let isMuted = false;
 let sessionQuestions = [];
 let currentOptions = [];
 let hasMadeMistake = false;
+let isExploring = false;
 
 // DOM Elements
 const clueTextElement = document.getElementById('clue-text');
@@ -82,6 +83,30 @@ function initGame() {
     if (muteBtn) {
         muteBtn.addEventListener('click', toggleMute);
     }
+    const showAllBtn = document.getElementById('show-all-btn');
+    if (showAllBtn) {
+        showAllBtn.addEventListener('click', showAllPlaces);
+    }
+}
+
+function showAllPlaces() {
+    isExploring = true;
+    startScreen.classList.add('hidden');
+    endScreen.classList.add('hidden');
+    gameScreen.classList.add('hidden');
+    
+    clueTextElement.textContent = "מציג את כל המקומות התנ\"כיים על המפה 🗺️";
+    clueTextElement.classList.remove('hidden');
+    
+    if (clueButtonsContainer) clueButtonsContainer.classList.add('hidden');
+    const optionsContainer = document.getElementById('options-container');
+    if (optionsContainer) optionsContainer.innerHTML = '';
+    const categoryEl = document.getElementById('clue-category');
+    if (categoryEl) categoryEl.classList.add('hidden');
+    
+    document.getElementById('clue-title').textContent = "כל המקומות";
+    
+    renderMapPins(gameStations, handlePinClick);
 }
 
 async function startGame() {
@@ -91,6 +116,7 @@ async function startGame() {
     currentStationIndex = 0;
     score = 0;
     hasMadeMistake = false;
+    isExploring = false;
     scoreValueElement.textContent = `0 / 5`;
     
     startScreen.classList.add('hidden');
@@ -154,30 +180,59 @@ function renderTimeline() {
     line.id = 'timeline-line';
     timelineContainer.appendChild(line);
 
-    const minYear = timelineData[0].year;
-    const maxYear = timelineData[timelineData.length - 1].year;
-    const totalYears = maxYear - minYear;
+    let currentWeight = 0;
+    const itemsInfo = [];
+    
+    // First pass: calculate weights
+    timelineData.forEach((item, index) => {
+        let weight = 0;
+        let hasGap = false;
+        
+        if (index > 0) {
+            const deltaYear = item.year - timelineData[index - 1].year;
+            if (deltaYear > 150) {
+                weight = 10;
+                hasGap = true;
+            } else {
+                weight = Math.max(4, deltaYear / 10);
+            }
+        }
+        
+        currentWeight += weight;
+        itemsInfo.push({
+            ...item,
+            accumulatedWeight: currentWeight,
+            hasGapBefore: hasGap
+        });
+    });
+
+    const totalWeight = currentWeight;
+    const padding = 2; // %
 
     let lastLeftPct = -100;
     let lastRightPct = -100;
-    const minGap = 4.0; // Percentage gap needed to avoid overlap
+    const minVisualGap = 2.5; 
 
-    timelineData.forEach((item) => {
-        const padding = 2;
-        const percentage = ((item.year - minYear) / totalYears) * (100 - 2 * padding) + padding;
+    itemsInfo.forEach((item, index) => {
+        const percentage = totalWeight > 0 
+            ? (item.accumulatedWeight / totalWeight) * (100 - 2 * padding) + padding
+            : 50;
 
-        // Choose side: default left, but if overlaps with left, move to right
-        let side = 'left';
-        if (percentage - lastLeftPct < minGap) {
-            side = 'right';
+        if (item.hasGapBefore) {
+            const prevItem = itemsInfo[index - 1];
+            const prevPercentage = (prevItem.accumulatedWeight / totalWeight) * (100 - 2 * padding) + padding;
+            const midPercentage = (percentage + prevPercentage) / 2;
+            
+            const gapDiv = document.createElement('div');
+            gapDiv.className = 'timeline-dots-gap';
+            gapDiv.innerHTML = '⋮<br>⋮';
+            gapDiv.style.top = `${midPercentage}%`;
+            timelineContainer.appendChild(gapDiv);
         }
+
+        // Choose side: strictly alternate to maximize space for larger fonts
+        let side = (index % 2 === 0) ? 'left' : 'right';
         
-        if (side === 'left') {
-            lastLeftPct = percentage;
-        } else {
-            lastRightPct = percentage;
-        }
-
         const itemDiv = document.createElement('div');
         itemDiv.className = 'timeline-item';
         if (side === 'right') {
@@ -233,7 +288,10 @@ async function loadCurrentStation() {
     shuffleArray(shuffledDistractors);
     const selectedDistractors = shuffledDistractors.slice(0, 3);
     
-    const distractorsObj = selectedDistractors.map(dId => gameStations.find(s => s.id === dId)).filter(Boolean);
+    const distractorsObj = selectedDistractors.map(d => {
+        const id = typeof d === 'string' ? d : d.id;
+        return gameStations.find(s => s.id === id);
+    }).filter(Boolean);
     options.push(...distractorsObj);
     shuffleArray(options);
     currentOptions = options;
@@ -290,6 +348,14 @@ function showEndScreen() {
 }
 
 async function handlePinClick(clickedId) {
+    if (isExploring) {
+        const station = gameStations.find(s => s.id === clickedId);
+        if (station) {
+            handleCorrectAnswer(station);
+        }
+        return;
+    }
+
     if (currentStationIndex >= 5) return;
     
     const question = sessionQuestions[currentStationIndex];
@@ -325,10 +391,12 @@ function handleRevealAnswer() {
 }
 
 async function handleCorrectAnswer(station) {
-    if (!hasMadeMistake) {
+    if (!hasMadeMistake && !isExploring) {
         score += 1;
     }
-    scoreValueElement.textContent = `${score} / 5`;
+    if (!isExploring) {
+        scoreValueElement.textContent = `${score} / 5`;
+    }
     currentStationForChapter = station;
     
     if (!isMuted) {

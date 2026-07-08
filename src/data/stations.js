@@ -8,8 +8,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "דברים לד, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Deuteronomy.34?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Deuteronomy.34.1?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1313
     },
     {
         "id": "הר סיני",
@@ -36,8 +37,9 @@ export const gameStations = [
         ],
         "characterName": "שאול המלך",
         "verseReference": "שמואל א לא, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.31?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.31.1?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1030
     },
     {
         "id": "רפידים",
@@ -48,8 +50,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "שמות יז, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.17?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.17.1?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1313
     },
     {
         "id": "הר עיבל",
@@ -60,8 +63,9 @@ export const gameStations = [
         ],
         "characterName": "יהושע בן נון",
         "verseReference": "יהושע ח, ל",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.8?context=0",
-        "characterIcon": "⚔️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.8.30?context=0",
+        "characterIcon": "⚔️",
+        "timelineYear": -1273
     },
     {
         "id": "הר המוריה",
@@ -72,8 +76,9 @@ export const gameStations = [
         ],
         "characterName": "אברהם אבינו",
         "verseReference": "בראשית כב, ב",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.22?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.22.2?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1700
     },
     {
         "id": "הר הכרמל",
@@ -116,8 +121,9 @@ export const gameStations = [
         ],
         "characterName": "אליהו הנביא",
         "verseReference": "מלכים א יט, ח",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.19?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.19.8?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -850
     },
     {
         "id": "הר צלמון",
@@ -128,8 +134,9 @@ export const gameStations = [
         ],
         "characterName": "אבימלך",
         "verseReference": "שופטים ט, מח",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.9?context=0",
-        "characterIcon": "🗡️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.9.48?context=0",
+        "characterIcon": "🗡️",
+        "timelineYear": -1100
     },
     {
         "id": "הר ההר",
@@ -140,8 +147,9 @@ export const gameStations = [
         ],
         "characterName": "אהרן הכהן",
         "verseReference": "במדבר כ, כב",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.20?context=0",
-        "characterIcon": "👳"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.20.22?context=0",
+        "characterIcon": "👳",
+        "timelineYear": -1313
     },
     {
         "id": "הר גריזים",
@@ -152,8 +160,9 @@ export const gameStations = [
         ],
         "characterName": "יותם בן גדעון",
         "verseReference": "שופטים ט, ז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.9?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.9.7?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1100
     },
     {
         "id": "יריחו",
@@ -196,8 +205,9 @@ export const gameStations = [
         ],
         "characterName": "יונה הנביא",
         "verseReference": "יונה ג, ב",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jonah.3?context=0",
-        "characterIcon": "🐋"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jonah.3.2?context=0",
+        "characterIcon": "🐋",
+        "timelineYear": -780
     },
     {
         "id": "הרמתה",
@@ -208,8 +218,9 @@ export const gameStations = [
         ],
         "characterName": "שמואל הנביא",
         "verseReference": "שמואל א ז, יז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.7?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.7.17?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1050
     },
     {
         "id": "עזה",
@@ -305,8 +316,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א כא, ב",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.21?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.21.2?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "דותן",
@@ -317,8 +329,9 @@ export const gameStations = [
         ],
         "characterName": "יוסף הצדיק",
         "verseReference": "בראשית לז, יז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.37?context=0",
-        "characterIcon": "👦"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.37.17?context=0",
+        "characterIcon": "👦",
+        "timelineYear": -1450
     },
     {
         "id": "שומרון",
@@ -330,7 +343,7 @@ export const gameStations = [
         "fullChapterSefariaRef": "I_Kings.16",
         "audioRegular": "https://mechon-mamre.org/mp3/t0916.mp3",
         "characterIcon": "🏛️",
-        "timelineYear": -850,
+        "timelineYear": -880,
         "coordinates": [
             32.2764,
             35.1894
@@ -361,8 +374,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "שמות יד, כא",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.14?context=0",
-        "characterIcon": "🌊"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.14.21?context=0",
+        "characterIcon": "🌊",
+        "timelineYear": -1313
     },
     {
         "id": "נהר הירדן",
@@ -373,8 +387,9 @@ export const gameStations = [
         ],
         "characterName": "יהושע בן נון",
         "verseReference": "יהושע ג, יד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.3?context=0",
-        "characterIcon": "⚔️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.3.14?context=0",
+        "characterIcon": "⚔️",
+        "timelineYear": -1273
     },
     {
         "id": "נחל כרית",
@@ -385,8 +400,9 @@ export const gameStations = [
         ],
         "characterName": "אליהו הנביא",
         "verseReference": "מלכים א יז, ג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.17?context=0",
-        "characterIcon": "🦅"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.17.3?context=0",
+        "characterIcon": "🦅",
+        "timelineYear": -850
     },
     {
         "id": "נחל יבוק",
@@ -397,8 +413,9 @@ export const gameStations = [
         ],
         "characterName": "יעקב אבינו",
         "verseReference": "בראשית לב, כג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.32?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.32.23?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1500
     },
     {
         "id": "מעיין חרוד",
@@ -409,8 +426,9 @@ export const gameStations = [
         ],
         "characterName": "גדעון",
         "verseReference": "שופטים ז, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.7?context=0",
-        "characterIcon": "🎺"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.7.1?context=0",
+        "characterIcon": "🎺",
+        "timelineYear": -1100
     },
     {
         "id": "נחל קישון",
@@ -421,8 +439,9 @@ export const gameStations = [
         ],
         "characterName": "דבורה הנביאה",
         "verseReference": "שופטים ה, כא",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.5?context=0",
-        "characterIcon": "👩"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Judges.5.21?context=0",
+        "characterIcon": "👩",
+        "timelineYear": -1150
     },
     {
         "id": "מי מריבה",
@@ -433,8 +452,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "במדבר כ, יג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.20?context=0",
-        "characterIcon": "🪨"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.20.13?context=0",
+        "characterIcon": "🪨",
+        "timelineYear": -1313
     },
     {
         "id": "נחל ארנון",
@@ -445,8 +465,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "דברים ב, כד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Deuteronomy.2?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Deuteronomy.2.24?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1313
     },
     {
         "id": "נחל אשכול",
@@ -457,8 +478,9 @@ export const gameStations = [
         ],
         "characterName": "המרגלים",
         "verseReference": "במדבר יג, כג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.13?context=0",
-        "characterIcon": "🍇"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.13.23?context=0",
+        "characterIcon": "🍇",
+        "timelineYear": -1313
     },
     {
         "id": "נהר פרת",
@@ -469,8 +491,9 @@ export const gameStations = [
         ],
         "characterName": "ירמיהו הנביא",
         "verseReference": "ירמיהו יג, ד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jeremiah.13?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jeremiah.13.4?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -586
     },
     {
         "id": "נחל הבשור",
@@ -481,8 +504,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א ל, ט",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.30?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.30.9?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "מערת המכפלה",
@@ -493,8 +517,9 @@ export const gameStations = [
         ],
         "characterName": "אברהם אבינו",
         "verseReference": "בראשית כג, יט",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.23?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.23.19?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1700
     },
     {
         "id": "המערה בעין גדי",
@@ -505,8 +530,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א כד, ג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.24?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.24.3?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "מערת עדולם",
@@ -517,8 +543,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א כב, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.22?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.22.1?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "מערה",
@@ -529,8 +556,9 @@ export const gameStations = [
         ],
         "characterName": "לוט",
         "verseReference": "בראשית יט, ל",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.19?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.19.30?context=0",
+        "characterIcon": "🧔",
+        "timelineYear": -1700
     },
     {
         "id": "המערה במקדה",
@@ -541,8 +569,9 @@ export const gameStations = [
         ],
         "characterName": "יהושע בן נון",
         "verseReference": "יהושע י, טז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.10?context=0",
-        "characterIcon": "⚔️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Joshua.10.16?context=0",
+        "characterIcon": "⚔️",
+        "timelineYear": -1273
     },
     {
         "id": "במערות",
@@ -553,8 +582,9 @@ export const gameStations = [
         ],
         "characterName": "עובדיה",
         "verseReference": "מלכים א יח, ד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.18?context=0",
-        "characterIcon": "🍞"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.18.4?context=0",
+        "characterIcon": "🍞",
+        "timelineYear": -850
     },
     {
         "id": "מרה",
@@ -565,8 +595,9 @@ export const gameStations = [
         ],
         "characterName": "משה רבנו",
         "verseReference": "שמות טו, כג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.15?context=0",
-        "characterIcon": "💧"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.15.23?context=0",
+        "characterIcon": "💧",
+        "timelineYear": -1313
     },
     {
         "id": "מדבר פארן",
@@ -577,8 +608,9 @@ export const gameStations = [
         ],
         "characterName": "המרגלים",
         "verseReference": "במדבר יג, ג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.13?context=0",
-        "characterIcon": "🚶"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.13.3?context=0",
+        "characterIcon": "🚶",
+        "timelineYear": -1313
     },
     {
         "id": "קדש ברנע",
@@ -589,8 +621,9 @@ export const gameStations = [
         ],
         "characterName": "בני ישראל",
         "verseReference": "במדבר לב, ח",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.32?context=0",
-        "characterIcon": "🏕️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.32.8?context=0",
+        "characterIcon": "🏕️",
+        "timelineYear": -1313
     },
     {
         "id": "מדבר שור",
@@ -601,8 +634,9 @@ export const gameStations = [
         ],
         "characterName": "הגר",
         "verseReference": "בראשית טז, ז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.16?context=0",
-        "characterIcon": "👩"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.16.7?context=0",
+        "characterIcon": "👩",
+        "timelineYear": -1700
     },
     {
         "id": "אילם",
@@ -613,8 +647,9 @@ export const gameStations = [
         ],
         "characterName": "בני ישראל",
         "verseReference": "שמות טו, כז",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.15?context=0",
-        "characterIcon": "🌴"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.15.27?context=0",
+        "characterIcon": "🌴",
+        "timelineYear": -1313
     },
     {
         "id": "מדבר סין",
@@ -625,8 +660,9 @@ export const gameStations = [
         ],
         "characterName": "בני ישראל",
         "verseReference": "שמות טז, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.16?context=0",
-        "characterIcon": "🍞"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Exodus.16.1?context=0",
+        "characterIcon": "🍞",
+        "timelineYear": -1313
     },
     {
         "id": "הרי אררט",
@@ -637,8 +673,9 @@ export const gameStations = [
         ],
         "characterName": "נח",
         "verseReference": "בראשית ח, ד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.8?context=0",
-        "characterIcon": "🚢"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.8.4?context=0",
+        "characterIcon": "🚢",
+        "timelineYear": -2105
     },
     {
         "id": "ראש הפסגה",
@@ -649,8 +686,9 @@ export const gameStations = [
         ],
         "characterName": "בלעם",
         "verseReference": "במדבר כג, יד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.23?context=0",
-        "characterIcon": "👁️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Numbers.23.14?context=0",
+        "characterIcon": "👁️",
+        "timelineYear": -1273
     },
     {
         "id": "הר הזיתים",
@@ -661,8 +699,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל ב טו, ל",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/II_Samuel.15?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/II_Samuel.15.30?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "ירושלים",
@@ -689,8 +728,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א כא, יא",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.21?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.21.11?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "מחניים",
@@ -701,8 +741,9 @@ export const gameStations = [
         ],
         "characterName": "יעקב אבינו",
         "verseReference": "בראשית לב, ב",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.32?context=0",
-        "characterIcon": "👼"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.32.2?context=0",
+        "characterIcon": "👼",
+        "timelineYear": -1500
     },
     {
         "id": "רמות גלעד",
@@ -713,8 +754,9 @@ export const gameStations = [
         ],
         "characterName": "אחאב",
         "verseReference": "מלכים א כב, ג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.22?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.22.3?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -850
     },
     {
         "id": "הים הגדול",
@@ -725,8 +767,9 @@ export const gameStations = [
         ],
         "characterName": "יונה הנביא",
         "verseReference": "יונה א, ג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jonah.1?context=0",
-        "characterIcon": "⛵"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Jonah.1.3?context=0",
+        "characterIcon": "⛵",
+        "timelineYear": -780
     },
     {
         "id": "נהר כבר",
@@ -737,8 +780,9 @@ export const gameStations = [
         ],
         "characterName": "יחזקאל הנביא",
         "verseReference": "יחזקאל א, א",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Ezekiel.1?context=0",
-        "characterIcon": "👁️"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Ezekiel.1.1?context=0",
+        "characterIcon": "👁️",
+        "timelineYear": -590
     },
     {
         "id": "מעיין הגיחון",
@@ -749,20 +793,9 @@ export const gameStations = [
         ],
         "characterName": "שלמה המלך",
         "verseReference": "מלכים א א, לג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.1?context=0",
-        "characterIcon": "👑"
-    },
-    {
-        "id": "יעקב ולאה",
-        "placeNameHebrew": "יעקב ולאה",
-        "coordinates": [
-            31.5242,
-            35.1107
-        ],
-        "characterName": "יעקב אבינו",
-        "verseReference": "בראשית כט, כג",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.29?context=0",
-        "characterIcon": "🧔"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Kings.1.33?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -970
     },
     {
         "id": "עין דור",
@@ -789,8 +822,9 @@ export const gameStations = [
         ],
         "characterName": "הגר",
         "verseReference": "בראשית כא, יד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.21?context=0",
-        "characterIcon": "👩"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/Genesis.21.14?context=0",
+        "characterIcon": "👩",
+        "timelineYear": -1700
     },
     {
         "id": "מדבר מעון",
@@ -801,8 +835,9 @@ export const gameStations = [
         ],
         "characterName": "דוד המלך",
         "verseReference": "שמואל א כג, כד",
-        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.23?context=0",
-        "characterIcon": "👑"
+        "sefariaApiUrl": "https://www.sefaria.org/api/texts/I_Samuel.23.24?context=0",
+        "characterIcon": "👑",
+        "timelineYear": -1000
     },
     {
         "id": "אשדוד",
@@ -932,38 +967,6 @@ export const gameStations = [
         "coordinates": [
             31.765,
             35.234
-        ]
-    },
-    {
-        "id": "אברהם ושרה",
-        "placeNameHebrew": "אברהם ושרה",
-        "coordinates": [
-            31.5242,
-            35.1107
-        ]
-    },
-    {
-        "id": "יצחק ורבקה",
-        "placeNameHebrew": "יצחק ורבקה",
-        "coordinates": [
-            31.5242,
-            35.1107
-        ]
-    },
-    {
-        "id": "יוסף ואסנת",
-        "placeNameHebrew": "יוסף ואסנת",
-        "coordinates": [
-            32.213,
-            35.272
-        ]
-    },
-    {
-        "id": "משה וציפורה",
-        "placeNameHebrew": "משה וציפורה",
-        "coordinates": [
-            31.7683,
-            35.7258
         ]
     },
     {

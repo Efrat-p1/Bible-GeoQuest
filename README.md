@@ -31,11 +31,15 @@
    VITE_SPOTIFY_CLIENT_ID=your_spotify_client_id_here
    VITE_SPOTIFY_CLIENT_SECRET=your_spotify_client_secret_here
    ```
-4. הריצו את שרת הפיתוח:
-   ```bash
-   npm run dev
-   ```
-5. פתחו את הכתובת `http://localhost:5173` בדפדפן.
+4. הריצו את שרת הפיתוח: `npm run dev`
+
+## 🚀 פריסה (Deployment) ל-Vercel
+
+הפרויקט בנוי באמצעות Vite ומותאם להעלאה חלקה ל-Vercel:
+1. העלו את הפרויקט למאגר Git (למשל GitHub).
+2. התחברו ל-[Vercel](https://vercel.com) וייבאו (Import) את המאגר שלכם.
+3. במסך ההגדרות ב-Vercel, הוסיפו את כל משתני הסביבה (Environment Variables) הקיימים בקובץ `.env.local` שלכם.
+4. Vercel יזהה אוטומטית את הפרויקט, יבנה אותו ויספק לכם כתובת חיה ברשת!
 
 ## 🤝 תרומה לפרויקט
 נשמח לראותכם תורמים לפרויקט! הוספת תחנות (Stations) או דמויות נוספות נעשית בקלות על ידי עדכון הקבצים תחת `src/data/`. 

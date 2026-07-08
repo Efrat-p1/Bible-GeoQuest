@@ -833,6 +833,20 @@ main {
     width: 100%;
 }
 
+.timeline-dots-gap {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%);
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    background: transparent;
+    padding: 0;
+    line-height: 0.8;
+    z-index: 10;
+    text-align: center;
+    opacity: 0.6;
+}
+
 #timeline-line {
     position: absolute;
     top: 5%;
@@ -900,12 +914,12 @@ main {
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     line-height: 1.1;
 }
 
 .timeline-event {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: var(--text-color);
     line-height: 1;
 }

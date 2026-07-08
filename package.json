@@ -1,6 +1,6 @@
 {
   "name": "prophets-on-the-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Biblical map game",
   "scripts": {
     "dev": "vite",
