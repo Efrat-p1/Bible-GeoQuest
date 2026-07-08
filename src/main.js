@@ -33,15 +33,12 @@ const scoreValueElement = document.getElementById('score-value');
 const resultModal = document.getElementById('result-modal');
 const closeModalBtn = document.getElementById('close-modal');
 const nextBtn = document.getElementById('next-button');
-const revealBtn = document.getElementById('reveal-btn');
-const skipBtn = document.getElementById('skip-btn');
 const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
 const endScreen = document.getElementById('end-screen');
 const loadingSpinner = document.getElementById('loading-spinner');
-const clueButtonsContainer = document.querySelector('.clue-buttons');
 
 const modalTitle = document.getElementById('modal-title');
 const characterIcon = document.getElementById('character-icon');
@@ -74,10 +71,8 @@ function initGame() {
     renderTimeline();
     initHomeSelector();
     
-    closeModalBtn.addEventListener('click', hideModal);
-    nextBtn.addEventListener('click', hideModal); // Next modal button just closes it now
-    revealBtn.addEventListener('click', handleRevealAnswer);
-    skipBtn.addEventListener('click', handleNextStation); // Main UI skip to next question
+    closeModalBtn.addEventListener('click', handleModalClose);
+    nextBtn.addEventListener('click', handleModalClose);
     if (startBtn) startBtn.addEventListener('click', startGame);
     if (restartBtn) restartBtn.addEventListener('click', startGame);
     if (muteBtn) {
@@ -98,7 +93,6 @@ function showAllPlaces() {
     clueTextElement.textContent = "מציג את כל המקומות התנ\"כיים על המפה 🗺️";
     clueTextElement.classList.remove('hidden');
     
-    if (clueButtonsContainer) clueButtonsContainer.classList.add('hidden');
     const optionsContainer = document.getElementById('options-container');
     if (optionsContainer) optionsContainer.innerHTML = '';
     const categoryEl = document.getElementById('clue-category');
@@ -126,7 +120,6 @@ async function startGame() {
     document.getElementById('clue-title').textContent = `מכין משחק...`;
     
     clueTextElement.classList.add('hidden');
-    if (clueButtonsContainer) clueButtonsContainer.classList.add('hidden');
     if (aiCreditElement) aiCreditElement.classList.add('hidden');
     if (loadingSpinner) loadingSpinner.classList.add('hidden');
     
@@ -279,7 +272,6 @@ async function loadCurrentStation() {
     }
     
     clueTextElement.classList.remove('hidden');
-    if (clueButtonsContainer) clueButtonsContainer.classList.remove('hidden');
     
     hasMadeMistake = false; // reset for this question
     
@@ -375,23 +367,18 @@ function handleIncorrectAnswer() {
         errorSound.play().catch(e => console.log("Audio play blocked"));
     }
     
-    clueContainer.classList.remove('shake');
-    void clueContainer.offsetWidth; // trigger reflow
-    clueContainer.classList.add('shake');
-}
-
-function handleRevealAnswer() {
-    hasMadeMistake = true;
-    if (currentStationIndex >= 5) return;
     const question = sessionQuestions[currentStationIndex];
     const correctStation = gameStations.find(s => s.id === question.correct_answer);
+    
     if (correctStation) {
-        highlightMarkerAndPan(correctStation.id, correctStation.coordinates);
+        handleCorrectAnswer(correctStation);
     }
 }
 
+
 async function handleCorrectAnswer(station) {
-    if (!hasMadeMistake && !isExploring) {
+    const wasCorrect = !hasMadeMistake && !isExploring;
+    if (wasCorrect) {
         score += 1;
     }
     if (!isExploring) {
@@ -399,12 +386,22 @@ async function handleCorrectAnswer(station) {
     }
     currentStationForChapter = station;
     
-    if (!isMuted) {
+    if (!isMuted && wasCorrect) {
         successSound.currentTime = 0;
         successSound.play().catch(e => console.log("Audio play blocked"));
     }
     
-    modalTitle.textContent = "כל הכבוד!";
+    if (isExploring) {
+        modalTitle.textContent = "מידע על המקום";
+        nextBtn.textContent = "חזור למפה 🗺️";
+    } else if (wasCorrect) {
+        modalTitle.textContent = "תשובה נכונה!";
+        nextBtn.textContent = "המשך ⏭️";
+    } else {
+        modalTitle.textContent = "טעית! התשובה הנכונה:";
+        nextBtn.textContent = "המשך ⏭️";
+    }
+
     
     // Character Info
     if (station.characterName) {
@@ -519,14 +516,12 @@ if (closeChapterModal) {
     });
 }
 
-function hideModal() {
+function handleModalClose() {
     resultModal.classList.add('hidden');
-}
-
-function handleNextStation() {
-    hideModal();
-    currentStationIndex++;
-    loadCurrentStation();
+    if (!isExploring) {
+        currentStationIndex++;
+        loadCurrentStation();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initGame);

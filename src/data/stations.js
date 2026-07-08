@@ -941,8 +941,8 @@ export const gameStations = [
         "id": "הנילוס",
         "placeNameHebrew": "הנילוס",
         "coordinates": [
-            30,
-            31.2
+            30.04,
+            31.23
         ]
     },
     {
