@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>נביאים על המפה!</title>
+    <title>מסע בזמן על המפה!</title>
     <!-- Modern Fonts (Heebo for Hebrew, Inter for numbers/English) -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <!-- Leaflet CSS -->
@@ -56,7 +56,7 @@
                     <button id="mute-btn" class="mute-btn" title="השתק/הפעל צלילי עזר" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center;">🔊</button>
                 </div>
                 
-                <h1>נביאים על המפה!</h1>
+                <h1>מסע בזמן על המפה!</h1>
                 
                 <div id="score-board">
                     <span>ניקוד: </span>
@@ -84,6 +84,7 @@
                     <div id="clue-category" class="clue-category hidden"></div>
                     <p id="clue-text">טוען שאלה...</p>
                     <div id="options-container" class="options-container"></div>
+                    <button id="next-question-btn" class="hint-button hidden" style="background: var(--secondary-color); color: white; margin-top: 15px; align-self: center;">השאלה הבאה ⏭️</button>
                 </div>
 
                 <!-- End Screen -->
@@ -116,9 +117,9 @@
                     <div id="character-icon">👤</div>
                     <div class="modal-header-text">
                         <h2 id="modal-title">כל הכבוד!</h2>
+                        <div id="place-name" class="place-badge"></div>
                         <h3 id="character-name"></h3>
                         <p id="character-description" class="character-description"></p>
-                        <div id="place-name" class="place-badge"></div>
                     </div>
                 </div>
                 <div class="biblical-source-container">

@@ -24,6 +24,7 @@ let sessionQuestions = [];
 let currentOptions = [];
 let hasMadeMistake = false;
 let isExploring = false;
+let isQuestionAnswered = false;
 
 // DOM Elements
 const clueTextElement = document.getElementById('clue-text');
@@ -80,27 +81,56 @@ function initGame() {
     }
     const showAllBtn = document.getElementById('show-all-btn');
     if (showAllBtn) {
-        showAllBtn.addEventListener('click', showAllPlaces);
+        showAllBtn.addEventListener('click', toggleExploreMode);
+    }
+    const nextQuestionBtn = document.getElementById('next-question-btn');
+    if (nextQuestionBtn) {
+        nextQuestionBtn.addEventListener('click', nextQuestion);
     }
 }
 
-function showAllPlaces() {
-    isExploring = true;
-    startScreen.classList.add('hidden');
-    endScreen.classList.add('hidden');
-    gameScreen.classList.add('hidden');
-    
-    clueTextElement.textContent = "מציג את כל המקומות התנ\"כיים על המפה 🗺️";
-    clueTextElement.classList.remove('hidden');
-    
-    const optionsContainer = document.getElementById('options-container');
-    if (optionsContainer) optionsContainer.innerHTML = '';
-    const categoryEl = document.getElementById('clue-category');
-    if (categoryEl) categoryEl.classList.add('hidden');
-    
-    document.getElementById('clue-title').textContent = "כל המקומות";
-    
-    renderMapPins(gameStations, handlePinClick);
+function nextQuestion() {
+    currentStationIndex++;
+    loadCurrentStation();
+}
+
+function toggleExploreMode() {
+    const showAllBtn = document.getElementById('show-all-btn');
+    if (isExploring) {
+        isExploring = false;
+        if (showAllBtn) showAllBtn.innerHTML = "מפת כל המקומות 🗺️";
+        
+        if (sessionQuestions.length === 0) {
+            startScreen.classList.remove('hidden');
+            clueTextElement.classList.add('hidden');
+            document.getElementById('clue-title').textContent = "";
+            clearMapPins();
+        } else if (currentStationIndex >= 5) {
+            showEndScreen();
+        } else {
+            gameScreen.classList.remove('hidden');
+            renderMapPins(currentOptions, handlePinClick);
+        }
+    } else {
+        isExploring = true;
+        if (showAllBtn) showAllBtn.innerHTML = "חזור למשחק ↩️";
+        
+        startScreen.classList.add('hidden');
+        endScreen.classList.add('hidden');
+        gameScreen.classList.add('hidden');
+        
+        clueTextElement.textContent = "מציג את כל המקומות התנ\"כיים על המפה 🗺️";
+        clueTextElement.classList.remove('hidden');
+        
+        const optionsContainer = document.getElementById('options-container');
+        if (optionsContainer) optionsContainer.innerHTML = '';
+        const categoryEl = document.getElementById('clue-category');
+        if (categoryEl) categoryEl.classList.add('hidden');
+        
+        document.getElementById('clue-title').textContent = "כל המקומות";
+        
+        renderMapPins(gameStations, handlePinClick);
+    }
 }
 
 async function startGame() {
@@ -111,6 +141,7 @@ async function startGame() {
     score = 0;
     hasMadeMistake = false;
     isExploring = false;
+    isQuestionAnswered = false;
     scoreValueElement.textContent = `0 / 5`;
     
     startScreen.classList.add('hidden');
@@ -274,6 +305,9 @@ async function loadCurrentStation() {
     clueTextElement.classList.remove('hidden');
     
     hasMadeMistake = false; // reset for this question
+    isQuestionAnswered = false;
+    const nextQuestionBtn = document.getElementById('next-question-btn');
+    if (nextQuestionBtn) nextQuestionBtn.classList.add('hidden');
     
     const options = [correctStation];
     const shuffledDistractors = [...question.distractors];
@@ -353,6 +387,13 @@ async function handlePinClick(clickedId) {
     const question = sessionQuestions[currentStationIndex];
     const correctStation = gameStations.find(s => s.id === question.correct_answer);
     
+    if (isQuestionAnswered) {
+        if (clickedId === correctStation.id) {
+            handleCorrectAnswer(correctStation);
+        }
+        return;
+    }
+
     if (clickedId === correctStation.id) {
         handleCorrectAnswer(correctStation);
     } else {
@@ -362,7 +403,7 @@ async function handlePinClick(clickedId) {
 
 function handleIncorrectAnswer() {
     hasMadeMistake = true;
-    if (!isMuted) {
+    if (!isMuted && !isQuestionAnswered) {
         errorSound.currentTime = 0;
         errorSound.play().catch(e => console.log("Audio play blocked"));
     }
@@ -378,7 +419,7 @@ function handleIncorrectAnswer() {
 
 async function handleCorrectAnswer(station) {
     const wasCorrect = !hasMadeMistake && !isExploring;
-    if (wasCorrect) {
+    if (wasCorrect && !isQuestionAnswered) {
         score += 1;
     }
     if (!isExploring) {
@@ -386,7 +427,7 @@ async function handleCorrectAnswer(station) {
     }
     currentStationForChapter = station;
     
-    if (!isMuted && wasCorrect) {
+    if (!isMuted && wasCorrect && !isQuestionAnswered) {
         successSound.currentTime = 0;
         successSound.play().catch(e => console.log("Audio play blocked"));
     }
@@ -396,12 +437,17 @@ async function handleCorrectAnswer(station) {
         nextBtn.textContent = "חזור למפה 🗺️";
     } else if (wasCorrect) {
         modalTitle.textContent = "תשובה נכונה!";
-        nextBtn.textContent = "המשך ⏭️";
+        nextBtn.textContent = "סגור וחזור למפה 🗺️";
     } else {
         modalTitle.textContent = "טעית! התשובה הנכונה:";
-        nextBtn.textContent = "המשך ⏭️";
+        nextBtn.textContent = "סגור וחזור למפה 🗺️";
     }
 
+    if (!isExploring) {
+        isQuestionAnswered = true;
+        const nextQuestionBtn = document.getElementById('next-question-btn');
+        if (nextQuestionBtn) nextQuestionBtn.classList.remove('hidden');
+    }
     
     // Character Info
     if (station.characterName) {
@@ -415,7 +461,7 @@ async function handleCorrectAnswer(station) {
         characterDescription.textContent = "";
     }
 
-    placeName.textContent = station.placeNameHebrew || station.id;
+    placeName.textContent = "📍 " + (station.placeNameHebrew || station.id);
     
     // Verse Data
     const primarySourceContainer = document.querySelector('.primary-source');
@@ -518,10 +564,6 @@ if (closeChapterModal) {
 
 function handleModalClose() {
     resultModal.classList.add('hidden');
-    if (!isExploring) {
-        currentStationIndex++;
-        loadCurrentStation();
-    }
 }
 
 document.addEventListener('DOMContentLoaded', initGame);
