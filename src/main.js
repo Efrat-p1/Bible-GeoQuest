@@ -87,6 +87,26 @@ function initGame() {
     if (nextQuestionBtn) {
         nextQuestionBtn.addEventListener('click', nextQuestion);
     }
+    const mobileDragHandle = document.getElementById('mobile-drag-handle');
+    if (mobileDragHandle) {
+        mobileDragHandle.addEventListener('click', toggleMobileBottomSheet);
+    }
+}
+
+function toggleMobileBottomSheet() {
+    const gameScreen = document.getElementById('game-screen');
+    const dragIcon = document.getElementById('drag-icon');
+    const dragText = document.getElementById('drag-text');
+    
+    if (gameScreen.classList.contains('collapsed')) {
+        gameScreen.classList.remove('collapsed');
+        if (dragIcon) dragIcon.textContent = '🔽';
+        if (dragText) dragText.textContent = 'הסתר תשובות';
+    } else {
+        gameScreen.classList.add('collapsed');
+        if (dragIcon) dragIcon.textContent = '🔼';
+        if (dragText) dragText.textContent = 'הצג תשובות';
+    }
 }
 
 function nextQuestion() {
@@ -308,6 +328,16 @@ async function loadCurrentStation() {
     isQuestionAnswered = false;
     const nextQuestionBtn = document.getElementById('next-question-btn');
     if (nextQuestionBtn) nextQuestionBtn.classList.add('hidden');
+
+    // Auto-collapse mobile bottom sheet for new question
+    const gameScreenEl = document.getElementById('game-screen');
+    const dragIcon = document.getElementById('drag-icon');
+    const dragText = document.getElementById('drag-text');
+    if (gameScreenEl) {
+        gameScreenEl.classList.add('collapsed');
+        if (dragIcon) dragIcon.textContent = '🔼';
+        if (dragText) dragText.textContent = 'הצג תשובות';
+    }
     
     const options = [correctStation];
     const shuffledDistractors = [...question.distractors];
